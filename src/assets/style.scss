@@ -1,0 +1,11 @@
+@import "./variables.scss";
+
+body {
+  margin: 0;
+  font-family: "Graphik LCG", Arial, Helvetica, sans-serif;
+}
+
+.page-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
