@@ -21,6 +21,12 @@ const routes = [
     name: "SecondPage",
     component: () => import("../views/SecondPage.vue"),
   },
+  {
+    path: "*",
+    name: "Error404",
+    component: () => import("../components/Error404.vue")
+
+  }
 ];
 
 const router = new VueRouter({

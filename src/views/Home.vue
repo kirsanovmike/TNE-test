@@ -1,6 +1,6 @@
 <template>
   <div class="page-wrapper">
-    <h1>HOME page</h1>
+    <img src="../img/OOO.jpg" alt="OOO">
   </div>
 </template>
 
@@ -9,4 +9,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+img {
+  margin-top: 10px;
+}
 </style>
