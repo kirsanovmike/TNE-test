@@ -21,10 +21,8 @@
             v-for="(count, i) in coutnOfColumns"
             :key="i"
           >
-
-          <VHour v-if=" columnsBy=='hour' "/>
-          <VDay v-else-if=" columnsBy=='day' "/>
-          
+            <VHour v-if="columnsBy == 'hour'" />
+            <VDay v-else-if="columnsBy == 'day'" />
           </td>
         </tr>
       </table>
@@ -34,13 +32,13 @@
 
 <script>
 import moment from "moment";
-import VHour from "@/components/VHour"
-import VDay from "@/components/VDay"
+import VHour from "@/components/VHour";
+import VDay from "@/components/VDay";
 
 export default {
   components: {
     VHour,
-    VDay
+    VDay,
   },
   props: {
     columnsBy: {
@@ -50,18 +48,25 @@ export default {
         return "day";
       },
     },
-    month: {
-      type: String,
-      required: true,
-      default() {
-        return "January";
-      },
-    },
     rows: {
       type: Array,
       required: true,
       deault() {
         return [];
+      },
+    },
+    year: {
+      type: Number,
+      required: true,
+      default() {
+        return moment().format("YYYY");
+      },
+    },
+    month: {
+      type: String,
+      required: true,
+      default() {
+        return "January";
       },
     },
   },
@@ -73,8 +78,24 @@ export default {
           count = 24;
           break;
         case "day":
-          count = 31;
-          break;
+          switch (this.month) {
+            case "Апрель":
+            case "Июнь":
+            case "Сентябрь":
+            case "Ноябрь":
+              count = 31;
+              break;
+            case "Февраль":
+              if (
+                !(+this.year % 4 || (!(+this.year % 100) && +this.year % 400))
+              )
+                count = 29;
+              else count = 28;
+              break;
+            default:
+              count = 30;
+              break;
+          }
       }
       return count;
     },
@@ -101,11 +122,11 @@ export default {
 .overflow-table::-webkit-scrollbar {
   width: 10px;
   background: #959dad6c;
-  border-radius: 8px 8px;
+  border-radius: 5px 5px;
 }
 .overflow-table::-webkit-scrollbar-thumb {
   background: #59606d91;
-  border-radius: 8px 8px;
+  border-radius: 5px 5px;
 }
 .overflow-table::-webkit-scrollbar-thumb:hover {
   background: #455c83c9;

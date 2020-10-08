@@ -11,7 +11,7 @@ export default {
   data() {
     return {
       columnsBy: "hour",
-      month: "october",
+      month: "October",
       rows: [
         "User 1",
         "User 2",

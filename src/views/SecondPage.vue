@@ -1,17 +1,18 @@
 <template>
   <div class="page-wrapper">
-    <Table :columnsBy="columnsBy" :month="month" :rows="rows" />
+    <Table :columnsBy="columnsBy" :year="year" :month="month" :rows="rows" />
   </div>
 </template>
 
 <script>
 import Table from "@/components/Table";
+import moment from "moment";
+
 export default {
   name: "SecondPage",
   data() {
     return {
       columnsBy: "day",
-      month: "December",
       rows: [
         "User 1",
         "User 2",
@@ -27,6 +28,8 @@ export default {
         "User 12",
         "User 13",
       ],
+      year: moment().format("YYYY"),
+      month: "Февраль",
     };
   },
   components: {
