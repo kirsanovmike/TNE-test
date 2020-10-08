@@ -22,8 +22,9 @@
             :key="i"
           >
 
-          <VMask v-if=" columnsBy=='hour' "/>
-          <img class="img" v-if=" columnsBy=='day' " src="@/img/img25.jpg" alt="poloygon">
+          <VHour v-if=" columnsBy=='hour' "/>
+          <VDay v-else-if=" columnsBy=='day' "/>
+          
           </td>
         </tr>
       </table>
@@ -33,11 +34,13 @@
 
 <script>
 import moment from "moment";
-import VMask from "@/components/VMask"
+import VHour from "@/components/VHour"
+import VDay from "@/components/VDay"
 
 export default {
   components: {
-    VMask
+    VHour,
+    VDay
   },
   props: {
     columnsBy: {
@@ -88,10 +91,6 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/style.scss";
 
-img {
-  width: 25px;
-  height: 25px;
-}
 .overflow-table {
   height: 500px;
   width: 1000px;
