@@ -102,8 +102,10 @@ export default {
   },
   methods: {
     takeColumnName(index, columnsBy) {
+      moment.locale("ru");
       if (columnsBy == "hour") return moment(`${index}`, "H").format("HH:mm");
-      if (columnsBy == "day") return moment(`${index + 1}`, "D").format("DD");
+      if (columnsBy == "day")
+        return moment(`${index + 1}`, "D").format("DD MMM");
     },
   },
 };
