@@ -29,7 +29,7 @@ export default {
         "User 13",
       ],
       year: moment().format("YYYY"),
-      month: "Февраль",
+      month: "Октябрь",
     };
   },
   components: {
